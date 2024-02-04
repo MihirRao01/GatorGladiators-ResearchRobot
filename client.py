@@ -23,12 +23,10 @@ def send(data):
     client.send(msg)
 
 
-send("Hello JetsonNano!")
-
 while True:
     try : 
         if serialInst.in_waiting:
-            packet = serialInst.readline()
+            packet = serialInst.readline().strip()
             print(packet.decode('utf'))
             send(packet.decode('utf'))
     except:
