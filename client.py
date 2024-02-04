@@ -1,6 +1,6 @@
 import socket 
 
-jetson_server = "192.168.56.1"
+jetson_server = "100.110.218.93"
 #jetson_server = "104.222.18.161"
 jetson_server_port = 8000
 ADDR = (jetson_server, jetson_server_port)
