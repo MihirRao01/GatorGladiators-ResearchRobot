@@ -1,6 +1,6 @@
 import socket
 import threading
-from testOfMotorDrive import setMotor
+from testOfMotorDrive import setMotor, motorCleanUp
 
 
 # Set the IP address and port on which the Jetson Nano will listen for incoming connections
@@ -28,6 +28,7 @@ def handle_client(conn, addr):
                if msg == "Disconnected":
                     connected = False
                     setMotor("Stop")
+                    motorCleanUp()
 
                #print(f"Received data:" {msg})
                print("Received data: ",msg)
@@ -35,8 +36,6 @@ def handle_client(conn, addr):
      conn.close()           
 
           
-     
-
 def start():
     server.listen(5)
     while True:

@@ -38,9 +38,12 @@ def setMotor(command):
     if command == "Forward":
         forward()
     elif command == "Stop":
-        time.sleep(5)
         stop()
-        GPIO.cleanup()
+
+def motorCleanUp():
+     GPIO.cleanup()
+
+
 
 
 # forward()   #Motor rotation
