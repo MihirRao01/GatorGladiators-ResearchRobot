@@ -17,5 +17,5 @@ def send(data):
     client.send(msg)
 
 
-send("Hello World!")
+send("Forward")
 send("Disconnected")
