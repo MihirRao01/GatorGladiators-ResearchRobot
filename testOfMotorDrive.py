@@ -33,7 +33,20 @@ def stop():   #Motor stop
     GPIO.output(BIN1,0)
     GPIO.output(BIN2,0)
 
-forward()   #Motor rotation
-time.sleep(5)   #Delay 5 seconds
-stop()   #stop
-GPIO.cleanup()  #clean up
+#wrapper function to set the motor commands
+def setMotor(command):
+    if command == "Forward":
+        forward()
+    elif command == "Stop":
+        stop()
+
+def motorCleanUp():
+     GPIO.cleanup()
+
+
+
+
+# forward()   #Motor rotation
+# time.sleep(5)   #Delay 5 seconds
+# stop()   #stop
+# GPIO.cleanup()  #clean up
