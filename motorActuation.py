@@ -49,13 +49,13 @@ GPIO.output(frontLeftB, 0)
 
 def forward():  #Motor rotation
     #A and B are the different motors, ___1 refers for forward, ___2 refers for backware
-    GPIO.output(backLeftF,0)
+    GPIO.output(backLeftF,1)
     GPIO.output(backLeftB,0)
     GPIO.output(backRightB,0)
-    GPIO.output(backRightF,0)
+    GPIO.output(backRightF,1)
     #Second set of motors
     GPIO.output(frontRightB,0)
-    GPIO.output(frontRightF,0)
+    GPIO.output(frontRightF,1)
     GPIO.output(frontLeftF,1)
     GPIO.output(frontLeftB,0)
 
@@ -63,34 +63,34 @@ def backward():  #Motor rotation
     #A and B are the different motors, 1 and 2 are different directions
     GPIO.output(backLeftF,0)
     GPIO.output(backLeftB,1)
+    GPIO.output(backRightB,1)
+    GPIO.output(backRightF,0)
+    #Second set of motors
+    GPIO.output(frontRightB,1)
+    GPIO.output(frontRightF,0)
+    GPIO.output(frontLeftF,0)
+    GPIO.output(frontLeftB,1)
+
+def right():  #Motor rotation
+    #Still needs to be modified
+    GPIO.output(backLeftF,0)
+    GPIO.output(backLeftB,1)
     GPIO.output(backRightB,0)
     GPIO.output(backRightF,1)
-    #Second set of motors
+    GPIO.output(frontRightB,1)
+    GPIO.output(frontRightF,0)
+    GPIO.output(frontLeftF,1)
+    GPIO.output(frontLeftB,0)
+
+def left():  #still needs to be modified
+    GPIO.output(backLeftF,1)
+    GPIO.output(backLeftB,0)
+    GPIO.output(backRightB,1)
+    GPIO.output(backRightF,0)
     GPIO.output(frontRightB,0)
     GPIO.output(frontRightF,1)
     GPIO.output(frontLeftF,0)
     GPIO.output(frontLeftB,1)
-
-def left():  #Motor rotation
-    #Still needs to be modified
-    GPIO.output(backLeftF,1)
-    GPIO.output(backLeftB,0)
-    GPIO.output(backRightB,1)
-    GPIO.output(backRightF,0)
-    GPIO.output(frontRightB,1)
-    GPIO.output(frontRightF,0)
-    GPIO.output(frontLeftF,1)
-    GPIO.output(frontLeftB,0)
-
-def right():  #still needs to be modified
-    GPIO.output(backLeftF,1)
-    GPIO.output(backLeftB,0)
-    GPIO.output(backRightB,1)
-    GPIO.output(backRightF,0)
-    GPIO.output(frontRightB,1)
-    GPIO.output(frontRightF,0)
-    GPIO.output(frontLeftF,1)
-    GPIO.output(frontLeftB,0)
     
 def stop():   #Motor stop
     GPIO.output(backLeftF,0)
@@ -103,14 +103,29 @@ def stop():   #Motor stop
     GPIO.output(frontLeftF,0)
     GPIO.output(frontLeftB,0)
 
+#wrapper function to set the motor commands
+def setMotor(command):
+    if command == "Forward":
+        forward()
+    elif command == "Stop":
+        stop()
+    elif command == "Right":
+        right()
+    elif command == "Left":
+        left()
+        
 
-forward()   #Motor rotation
+def motorCleanUp():
+     GPIO.cleanup()
+
+
+# forward()   #Motor rotation
 # time.sleep(5)   #Delay 5 seconds
 # right()   #Motor rotation
 # time.sleep(5)   #Delay 5 seconds
 # backward()   #Motor rotation
 # time.sleep(5)   #Delay 5 seconds
 # left()   #Motor rotation
-time.sleep(5)   #Delay 5 seconds
-stop()   #stop
-GPIO.cleanup()  #clean up
+# time.sleep(5)   #Delay 5 seconds
+# stop()   #stop
+# GPIO.cleanup()  #clean up

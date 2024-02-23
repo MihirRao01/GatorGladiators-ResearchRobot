@@ -1,6 +1,6 @@
 import socket
 import threading
-from testOfMotorDrive import setMotor, motorCleanUp
+from motorActuation import setMotor, motorCleanUp
 
 
 # Set the IP address and port on which the Jetson Nano will listen for incoming connections
